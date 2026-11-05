@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Esai Sejarah Bencana & Lingkungan - MICAYA</title>
+  <meta name="description" content="Koleksi esai historiografi kritis sejarah bencana, perubahan ekologi, dan dampaknya terhadap cagar budaya di Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --surface-subtle: #F4EFE6;
+      --text: #1C1917;
+      --text-muted: #57534E;
+      --border: #E7E5E4;
+      --border-strong: #D6D3D1;
+      --primary: #1C1917;
+      --accent: #9A3412;
+      --accent-light: #FFEDD5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    header { background: rgba(250, 247, 242, 0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0.85rem 0; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); }
+    .brand-badge { width: 2.25rem; height: 2.25rem; background: var(--primary); color: #FEF3C7; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.15rem; }
+    .brand-title { font-size: 1.15rem; font-weight: bold; letter-spacing: -0.02em; }
+    .brand-sub { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; display: block; }
+    
+    .nav-links { display: flex; gap: 1.25rem; font-size: 0.825rem; font-weight: 500; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a.active, .nav-links a:hover { color: var(--text); font-weight: 600; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+    .btn-primary { background: var(--primary); color: #FFFFFF; }
+    .btn-secondary { background: var(--surface-subtle); color: var(--text); border-color: var(--border-strong); }
+
+    .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.5rem; display: block; font-weight: 600; }
+    .section-title { font-size: 2rem; font-weight: bold; color: var(--text); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .section-desc { font-size: 0.925rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; }
+
+    /* Essay Layout */
+    .essay-grid { display: grid; grid-template-columns: 0.85fr 1.5fr; gap: 2rem; margin-top: 1.5rem; align-items: start; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+
+    .essay-item {
+      padding: 0.85rem; border-radius: 0.65rem; border: 1px solid var(--border); margin-bottom: 0.6rem;
+      cursor: pointer; background: var(--surface); transition: all 0.15s;
+    }
+    .essay-item:hover, .essay-item.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .essay-item.active h4 { color: white; }
+    .essay-item.active p { color: #E7E5E4; }
+    .essay-item.active .meta-text { color: #FDE68A; }
+
+    /* Editorial Prose styling */
+    .essay-content h2 { font-size: 1.6rem; font-weight: bold; line-height: 1.3; margin-bottom: 0.5rem; }
+    .essay-subtitle { font-size: 1rem; font-style: italic; color: #57534E; margin-bottom: 1.25rem; line-height: 1.5; font-family: 'Playfair Display', serif; }
+    .essay-body p { font-size: 0.95rem; color: #292524; line-height: 1.8; margin-bottom: 1.25rem; }
+    
+    .drop-cap:first-letter {
+      float: left; font-size: 3.25rem; line-height: 0.8; font-family: 'Playfair Display', serif;
+      font-weight: bold; margin-right: 0.6rem; color: var(--text);
+    }
+
+    blockquote {
+      background: var(--surface-subtle); border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong);
+      padding: 1rem 1.25rem; margin: 1.5rem 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem;
+    }
+    blockquote cite { display: block; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-style: normal; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; }
+
+    footer { background: var(--surface-subtle); border-top: 1px solid var(--border); padding: 3rem 0 2rem; font-size: 0.75rem; color: var(--text-muted); margin-top: 3rem; }
+
+    @media (max-width: 850px) {
+      .essay-grid { grid-template-columns: 1fr; }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 0.75rem; width: 100%; padding-top: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">M</div>
+        <div>
+          <span class="brand-title">MICAYA</span>
+          <span class="brand-sub">Model Mitigasi Cagar Budaya</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="peta-cagar-budaya.html">Peta Cagar Budaya</a>
+        <a href="esai-sejarah-bencana.html" class="active">Esai Sejarah Bencana</a>
+        <a href="model-micaya.html">Sintak Model</a>
+        <a href="sumber-belajar.html">Sumber Belajar & LKPD</a>
+      </nav>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <button onclick="window.print()" class="btn btn-secondary">Cetak Esai</button>
+        <a href="index.html" class="btn btn-primary" title="Buka Aplikasi Web Terintegrasi">Web App Utama</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+    <div>
+      <span class="section-kicker">Kajian Historiografi Kritis · Sintaks Membaca</span>
+      <h1 class="section-title">Esai Sejarah Bencana & Lingkungan Nusantara</h1>
+      <p class="section-desc">
+        Kumpulan 6 esai komprehensif yang membedah peristiwa letusan gunung api purba, guncangan sesar, dan dinamika air yang membentuk peninggalan bersejarah Indonesia.
+      </p>
+    </div>
+
+    <div class="essay-grid">
+      
+      <!-- Left Sidebar: List of 6 Essays -->
+      <div>
+        <span style="font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; font-weight: bold;">
+          Daftar Esai (Pilih untuk Membaca):
+        </span>
+
+        <div id="essay-list"></div>
+      </div>
+
+      <!-- Right: Editorial Article Reader -->
+      <article class="card" id="essay-reader">
+        <!-- Will be populated by JS -->
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div><strong>MICAYA</strong> — Esai Sejarah Bencana & Lingkungan.</div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="index.html" style="color: var(--text); text-decoration: none;">Beranda</a>
+        <a href="peta-cagar-budaya.html" style="color: var(--text); text-decoration: none;">Peta</a>
+        <a href="model-micaya.html" style="color: var(--text); text-decoration: none;">Model MICAYA</a>
+        <a href="sumber-belajar.html" style="color: var(--text); text-decoration: none;">LKPD</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const ESSAYS_DATA = [
+      {
+        id: 'merapi',
+        index: '01',
+        era: 'Abad ke-8 s.d. 11 M',
+        title: 'Amuk Merapi dan Penguburan Peradaban Mataram Kuno',
+        subtitle: 'Rekonstruksi Geohistori Terkuburnya Candi Sambisari dan Eksodus Kekuasaan Mpu Sindok ke Jawa Timur',
+        readTime: '7 menit',
+        summary: 'Bagaimana letusan dahsyat Gunung Merapi purba menimbun candi-candi megah di pedalaman Jawa sedalam bermeter-meter dan mengubah peta politik Jawa kuno.',
+        body: [
+          'Pada kurun abad ke-8 hingga ke-10 Masehi, dataran Kedu dan Prambanan berkembang sebagai pusat peradaban agraris yang sangat makmur. Dinasti Sanjaya dan Syailendra mendirikan mahakarya arsitektur batu andesit: Candi Borobudur, Prambanan, Mendut, Sewu, hingga Sambisari. Namun kemakmuran tanah vulkanik yang subur menyimpan paradoks geologis: letak geografisnya persis berada di bawah bayang-bayang Gunung Merapi, salah satu gunung api teraktif di dunia.',
+          'Bukti paling nyata dari kedahsyatan bencana vulkanik masa lalu adalah penemuan Candi Sambisari pada tahun 1966. Seorang petani mencangkul tanah sawahnya dan membentur sebongkah batu andesit berukir. Setelah ekskavasi arkeologis berlangsung, sebuah kompleks candi Hindu abad ke-9 berdiri utuh di kedalaman 6,5 meter di bawah tanah! Candi ini terkubur secara katastropik oleh banjir lahar dingin dan material piroklastik Merapi purba.',
+          'Geolog R.W. van Bemmelen mengajukan teori bahwa letusan dahsyat Merapi pada tahun 1006 M memicu gempa bumi besar, merusak jaringan irigasi sawah, dan memicu krisis pangan massal. Hal ini diduga menjadi pemicu utama Mpu Sindok memindahkan ibu kota Mataram Kuno dari Jawa Tengah ke Lembah Sungai Brantas Jawa Timur pada 929 M.',
+          'Kajian atas peristiwa ini memberikan protokol mitigasi penting bagi konservasi modern: ketika Merapi meletus hebat pada 2010, tim konservator segera memasang penutup terpal anti-asam pada stupa Borobudur untuk menyelamatkan relief batu andesit dari korosi abu tefra.'
+        ],
+        quote: {
+          text: 'Pralaya ri Bhumi Jawa... guncangan tanah laksana gelombang samudra, kabut abu pekat menutup sang surya, dan sungai-sungai meluapkan pasir panas.',
+          cite: 'Fragmen Prasasti Pucangan (1041 M)'
+        },
+        question: 'Mengapa masyarakat Jawa Kuno tetap memilih mendirikan candi suci di dekat gunung api aktif meskipun mengetahui risiko letusannya?'
+      },
+      {
+        id: 'prambanan',
+        index: '02',
+        era: 'Mei 2006 s.d. Sekarang',
+        title: 'Goncangan Sesar Opak: Tragedi & Anastilosis Candi Prambanan',
+        subtitle: 'Analisis Seismologi Gempa Yogyakarta 2006 dan Rekonstruksi Blok Batu Berbasis TLS 3D',
+        readTime: '6 menit',
+        summary: 'Bagaimana gempa dangkal Mw 6.3 pada 27 Mei 2006 mengguncang kompleks Candi Prambanan, meruntuhkan batu kemuncak ratna, serta memicu inovasi metode anastilosis tahan gempa.',
+        body: [
+          'Pukul 05.54 WIB pada 27 Mei 2006, gempa bumi berkekuatan Mw 6.3 mengguncang Yogyakarta dan Jawa Tengah. Dengan hiposentrum dangkal sekitar 10-12 km di dekat sesar aktif Sesar Opak, gempa ini menghasilkan percepatan tanah puncak yang sangat merusak.',
+          'Hanya dalam waktu kurang dari 60 detik, Kompleks Percandian Prambanan yang telah berdiri lebih dari seribu tahun mengalami kerusakan fisik terparah dalam sejarah modernnya. Candi Siwa setinggi 47 meter bergoyang keras, ratusan batu ratna kemuncak terlempar dari ketinggian, dan Candi Brahma mengalami keretakan vertikal.',
+          'Candi-candi di Jawa dibangun dengan sistem dry stone masonry (batu tumpuk bertakik tanpa semen perekat). Sistem ini memiliki fleksibilitas alami terhadap gempa kecil lewat friksi antar-batu. Namun, karena bentuk menara Prambanan yang sangat ramping dan tinggi, momen inersia ayunan di bagian puncak melampaui batas elastisitas, mengakibatkan batu ratna terlempar lepas.',
+          'Pasca-gempa, UNESCO bersama BPCB menerapkan teknik anastilosis presisi berbasis Terrestrial Laser Scanner (TLS) 3D dan memperkuat sambungan kritis dengan serat aramid tersembunyi.'
+        ],
+        quote: {
+          text: 'Suara gemuruh batu bertumbukan di udara terdengar mengerikan. Menara-menara kemuncak candi bergoyang kencang sebelum terlempar menghantam pelataran...',
+          cite: 'Laporan Saksi Mata Juru Pelihara BPCB (2006)'
+        },
+        question: 'Bagaimana sistem kuncian batu candi tanpa semen (dry stone) merespons gelombang gempa dibandingkan gedung beton bertulang modern?'
+      },
+      {
+        id: 'aceh',
+        index: '03',
+        era: '26 Desember 2004',
+        title: 'Gelombang Samudra Hindia: Baiturrahman & Kearifan Smong',
+        subtitle: 'Ketahanan Pilar Terbuka dan Pembelajaran Mitigasi Tsunami Masa Depan',
+        readTime: '7 menit',
+        summary: 'Mengapa Masjid Raya Baiturrahman mampu berdiri tegak di tengah kehancuran total tsunami 2004, dan bagaimana syair Smong menyelamatkan ribuan warga Simeulue.',
+        body: [
+          'Minggu pagi, 26 Desember 2004, gempa megathrust Mw 9.1 memicu tsunami setinggi 15 hingga 30 meter menerjang Banda Aceh. Di tengah kehancuran total kota, Masjid Raya Baiturrahman tetap berdiri kokoh dengan dinding putih dan kubah hitamnya.',
+          'Kajian teknik sipil forensik mengungkapkan rahasia strukturalnya: arsitektur masjid menggunakan sistem lengkungan terbuka (archways) dan pilar kokoh yang memungkinkan aliran hidrodinamis tsunami menerobos lewat tanpa menumpuk tekanan benturan frontal, ditambah fondasi dalam era 1881 yang bertumpu pada tanah keras.',
+          'Di sisi lain, masyarakat Pulau Simeulue yang sangat dekat dengan pusat gempa hanya kehilangan segelintir jiwa berkat kearifan lokal "Smong". Tradisi tutur turun-temurun sejak 1907 ini mengajarkan: jika terjadi lindu kuat dan air laut surut tiba-tiba, segera lari ke tempat tinggi!',
+          'Kini, situs-situs tsunami di Aceh ditetapkan sebagai cagar budaya memori kebencanaan untuk mengedukasi generasi penerus.'
+        ],
+        quote: {
+          text: 'Kami berlari ke dalam pelataran masjid saat air hitam pekat menderu. Masjid ini telah menjadi bahtera penyelamat jiwa kami.',
+          cite: 'Kesaksian Penyintas Tsunami di Halaman Baiturrahman (2004)'
+        },
+        question: 'Bagaimana tradisi tutur lisan Smong di Simeulue dapat diadopsi menjadi metode pembelajaran sejarah yang kontekstual bagi generasi muda?'
+      },
+      {
+        id: 'tambora',
+        index: '04',
+        era: '1815 & 1883 M',
+        title: 'Tahun Tanpa Musim Panas: Erupsi Tambora 1815 & Krakatau 1883',
+        subtitle: 'Dampak Supervulkanik terhadap Ekologi, Arsip, dan Bangunan Bersejarah',
+        readTime: '6 menit',
+        summary: 'Letusan dahsyat Tambora 1815 dan Krakatau 1883 melenyapkan kerajaan-kerajaan lokal, memicu krisis iklim global 1816, dan merusak artefak pesisir.',
+        body: [
+          'Pada April 1815, Gunung Tambora di Sumbawa meletus dengan VEI 7, memotong tinggi puncaknya dari 4.300 mdpl menjadi 2.850 mdpl dan memusnahkan Kerajaan Tambora, Pekat, dan Sanggar. Istana kayu dan perpustakaan naskah lontar terkubur oleh aliran piroklastik panas tebal, yang kini disebut arkeolog sebagai "Pompeii dari Timur".',
+          'Aerosol sulfat Tambora di stratosfer memicu "Year Without a Summer" (1816) di belahan bumi utara, memicu gagal panen gandum massal di Eropa dan badai salju di musim panas.',
+          'Pada 27 Agustus 1883, Gunung Krakatau di Selat Sunda meletus menghasilkan tsunami setinggi 36 meter yang menyapu pesisir Anyer hingga Kalianda. Di Batavia (Kota Tua Jakarta), langit tertutup debu abu-abu pekat berminggu-minggu, memperparah polusi kanal dan merusak fasad kayu kolonial.'
+        ],
+        quote: {
+          text: 'Langit menggelap gulita di tengah siang selama tiga hari berturut-turut. Debu tebal menyelimuti atap hingga runtuh...',
+          cite: 'Thomas Stamford Raffles, The History of Java (1817)'
+        },
+        question: 'Mengapa situs pemukiman Kerajaan Tambora sering dijuluki para arkeolog sebagai "Pompeii dari Timur"?'
+      },
+      {
+        id: 'batavia',
+        index: '05',
+        era: 'Abad ke-17 s.d. Abad ke-21',
+        title: 'Kutukan Air Batavia: Deforestasi Hulu & Pelapukan Kota Tua',
+        subtitle: 'Kegagalan Kanal Belanda di Muara Tropis Ciliwung dan Ancaman Land Subsidence',
+        readTime: '6 menit',
+        summary: 'Kegagalan menduplikasi kanal Amsterdam di iklim tropis Batavia, sedimentasi lumpur hulu Ciliwung, dan tantangan subsidensi tanah Jakarta kini.',
+        body: [
+          'Ketika Jan Pieterszoon Coen menaklukkan Jayakarta pada tahun 1619, para insinyur VOC membangun jaringan kanal lurus menyerupai Amsterdam. Namun iklim Belanda sangat berbeda dengan Batavia yang dipengaruhi musim monsun ekstrem dan debit sedimen tinggi dari Gunung Megamendung Bogor.',
+          'Pembukaan perkebunan tebu VOC di hulu Ciliwung memicu erosi masif. Gempa Gunung Salak 1699 memperparah keadaan: jutaan ton lumpur menutup kanal Batavia, air tergenang, nyamuk malaria menyebar, dan Batavia berubah julukan dari "Ratu dari Timur" menjadi "Kuburan Orang Belanda" (Graf der Hollanders).',
+          'Saat ini, kawasan Kota Tua Jakarta menghadapi ancaman subsidensi tanah (penurunan 5–10 cm per tahun) dan banjir rob pasang laut yang merusak elemen kayu jati dan bata purba Museum Sejarah Jakarta.'
+        ],
+        quote: {
+          text: 'Kanal-kanal Batavia tidak lagi mengalirkan air jernih, melainkan lumpur hitam berbau busuk yang menjadi kuburan pedagang...',
+          cite: 'Catatan Pelaut Swedia Carl Peter Thunberg (1775)'
+        },
+        question: 'Bagaimana korelasi antara alih fungsi lahan hutan di hulu Bogor dengan kerusakan fisik bangunan bersejarah di muara Jakarta?'
+      },
+      {
+        id: 'trowulan',
+        index: '06',
+        era: 'Abad ke-14 M',
+        title: 'Kearifan Air Majapahit: Kanal, Waduk, & Mitigasi Banjir Purba',
+        subtitle: 'Sistem Hidrolika Trowulan Menghadapi Lahar Brantas dan Air Limpasan Tropis',
+        readTime: '7 menit',
+        summary: 'Bagaimana perencana kota Majapahit mendesain danau buatan Kolam Segaran dan Candi Tikus untuk mengendalikan banjir bandang ibu kota abad ke-14.',
+        body: [
+          'Ibu kota Kemaharajaan Majapahit di Trowulan dihuni oleh ratusan ribu jiwa. Berada di dataran antara lereng Gunung Welirang dan cekungan Sungai Brantas, kota ini rawan menerima banjir lahar dingin dan limpasan hujan lebat.',
+          'Nenek moyang Majapahit merespons tantangan air dengan mendirikan Kolam Segaran, waduk buatan raksasa seluas 6,5 hektar yang dikelilingi dinding bata setebal 1,6 meter. Waduk ini berfungsi sebagai retarding basin penampung luapan air banjir saat musim hujan dan cadangan irigasi saat musim kemarau.',
+          'Peninggalan lain adalah Candi Tikus, petirtaan yang dibangun 3,5 meter di bawah tanah dengan 46 pancuran air jaladwara yang berfungsi ganda sebagai sumur pantau ketinggian muka air tanah purba (piezometer kuno).'
+        ],
+        quote: {
+          text: 'Kanal-kanal membelah kota dengan airnya yang bening mengalir menuju danau buatan tempat perahu berkilau...',
+          cite: 'Kakawin Nagarakretagama pupuh VIII oleh Mpu Prapanca (1365 M)'
+        },
+        question: 'Bagaimana prinsip kolam retensi Segaran Majapahit dapat diadopsi untuk memecahkan problem banjir perkotaan di Indonesia hari ini?'
+      }
+    ];
+
+    let currentEssayId = 'merapi';
+
+    function renderEssayList() {
+      const listEl = document.getElementById('essay-list');
+      listEl.innerHTML = '';
+
+      ESSAYS_DATA.forEach(essay => {
+        const item = document.createElement('div');
+        item.className = `essay-item ${essay.id === currentEssayId ? 'active' : ''}`;
+        item.onclick = () => selectEssay(essay.id);
+
+        item.innerHTML = `
+          <div style="font-size: 0.65rem; font-family: 'JetBrains Mono', monospace;" class="meta-text">
+            ${essay.index} · ${essay.era} · ${essay.readTime}
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: bold; margin-top: 0.2rem;">${essay.title}</h4>
+          <p style="font-size: 0.75rem; margin-top: 0.2rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+            ${essay.subtitle}
+          </p>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    function selectEssay(id) {
+      currentEssayId = id;
+      renderEssayList();
+
+      const essay = ESSAYS_DATA.find(e => e.id === id) || ESSAYS_DATA[0];
+      const reader = document.getElementById('essay-reader');
+
+      reader.innerHTML = `
+        <div style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transform: uppercase;">
+            Era: ${essay.era} · Waktu Baca: ${essay.readTime}
+          </div>
+          <h2 style="margin-top: 0.3rem;">${essay.title}</h2>
+          <div class="essay-subtitle">${essay.subtitle}</div>
+          <div style="font-size: 0.85rem; font-style: italic; color: #57534E; background: var(--surface-subtle); padding: 0.75rem; border-radius: 0.5rem;">
+            "${essay.summary}"
+          </div>
+        </div>
+
+        <div class="essay-body">
+          ${essay.body.map((p, i) => `<p class="${i === 0 ? 'drop-cap' : ''}">${p}</p>`).join('')}
+        </div>
+
+        <blockquote>
+          "${essay.quote.text}"
+          <cite>— ${essay.quote.cite}</cite>
+        </blockquote>
+
+        <!-- Pertanyaan Pemantik Diskusi -->
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.25rem;">
+          <h4 style="font-size: 1rem; font-weight: bold; margin-bottom: 0.5rem;">
+            Pertanyaan Pemantik Diskusi Kelas (Sintaks Membaca):
+          </h4>
+          <p style="font-size: 0.85rem; color: #44403C; font-weight: 500; margin-bottom: 0.75rem;">
+            ${essay.question}
+          </p>
+          <textarea id="note-${essay.id}" rows="3" placeholder="Ketik catatan analisis atau jawaban kelompok Anda di sini..." style="width: 100%; padding: 0.65rem; border: 1px solid var(--border-strong); border-radius: 0.5rem; font-size: 0.8rem;"></textarea>
+          <button onclick="saveNote('${essay.id}')" class="btn btn-secondary" style="margin-top: 0.5rem;">Simpan Catatan</button>
+        </div>
+      `;
+
+      // Load saved note
+      const saved = localStorage.getItem('note_' + essay.id);
+      if (saved) {
+        document.getElementById('note-' + essay.id).value = saved;
+      }
+    }
+
+    function saveNote(essayId) {
+      const val = document.getElementById('note-' + essayId).value;
+      localStorage.setItem('note_' + essayId, val);
+      alert('Catatan diskusi esai berhasil disimpan!');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderEssayList();
+      selectEssay('merapi');
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

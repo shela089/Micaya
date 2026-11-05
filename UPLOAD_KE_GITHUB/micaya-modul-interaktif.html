@@ -1,0 +1,1040 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MICAYA - Modul Interaktif & Panduan Pembelajaran Mitigasi Cagar Budaya</title>
+  <meta name="description" content="File HTML mandiri dan terintegrasi untuk Model Pembelajaran Mitigasi Cagar Budaya (MICAYA) oleh Shela Dwi Utari. Dapat digunakan offline untuk kegiatan kelas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --surface-subtle: #F4EFE6;
+      --text: #1C1917;
+      --text-muted: #57534E;
+      --border: #E7E5E4;
+      --border-strong: #D6D3D1;
+      --primary: #1C1917;
+      --accent: #9A3412;
+      --accent-light: #FFEDD5;
+      --emerald: #065F46;
+      --emerald-light: #D1FAE5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header Nav */
+    header {
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-badge {
+      width: 2.25rem;
+      height: 2.25rem;
+      background: var(--primary);
+      color: #FEF3C7;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      font-size: 1.15rem;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: #292524;
+    }
+
+    .btn-secondary {
+      background: var(--surface-subtle);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background: #EAE3D5;
+    }
+
+    /* Main Content Sections */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      line-height: 1.7;
+    }
+
+    /* Hero Banner */
+    .hero {
+      padding: 4rem 0 3.5rem;
+      background: radial-gradient(ellipse at top, #FAF5EB 0%, #FAF7F2 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-lead {
+      font-size: 1rem;
+      color: #44403C;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    /* Table Styling for Syntax Table 2 */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.825rem;
+    }
+
+    th {
+      background: #F5EFE6;
+      padding: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      color: var(--text);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    td {
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.65;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #FAF7F2;
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    /* LKPD Form */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-strong);
+      border-radius: 0.5rem;
+      background: var(--surface);
+      font-size: 0.85rem;
+      color: var(--text);
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(28, 25, 23, 0.05);
+    }
+
+    /* Grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Quiz styling */
+    .quiz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-options {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quiz-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.825rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.35rem;
+      border: 1px solid transparent;
+    }
+
+    .quiz-opt:hover {
+      background: var(--surface-subtle);
+    }
+
+    .quiz-feedback {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      display: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Print View */
+    @media print {
+      header, .no-print {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .card, .table-container {
+        border: 1px solid #CCCCCC !important;
+        box-shadow: none !important;
+      }
+      section {
+        padding: 1.5rem 0 !important;
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 0.75rem; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand" title="Kembali ke Aplikasi Utama">
+        <div class="brand-badge">M</div>
+        <div>
+          <span class="brand-title">MICAYA</span>
+          <span class="brand-sub">Model Pembelajaran Mitigasi Cagar Budaya</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#sintaks">Sintak Model</a>
+        <a href="#cagar-budaya">12 Cagar Budaya</a>
+        <a href="#lkpd">LKPD Kelas</a>
+        <a href="#esai">Esai Bencana</a>
+        <a href="#kuis">Kuis HOTS</a>
+      </nav>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <button onclick="window.print()" class="btn btn-secondary" title="Cetak modul ini">
+          Cetak Modul (PDF)
+        </button>
+        <a href="index.html" class="btn btn-primary">
+          Buka Web Interaktif
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="section-kicker">Dokumen Pembelajaran Terpadu · Format HTML Mandiri</span>
+        <h1>Model Pembelajaran Mitigasi Cagar Budaya (MICAYA)</h1>
+        <p class="hero-lead">
+          File HTML mandiri dan terintegrasi ini dirancang untuk dapat diakses baik secara daring maupun luring (offline) di sekolah. Mengintegrasikan sejarah kebencanaan Indonesia, mitigasi struktural cagar budaya, serta lima tahapan sintaks pembelajaran berdasarkan riset <strong>Shela Dwi Utari</strong>.
+        </p>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="#sintaks" class="btn btn-primary">Pelajari 5 Sintaks MICAYA</a>
+          <a href="#lkpd" class="btn btn-secondary">Buka Formulir LKPD</a>
+          <button onclick="downloadSelf()" class="btn btn-secondary no-print" title="Simpan file HTML ini ke perangkat Anda">
+            Unduh Berkas HTML Ini
+          </button>
+        </div>
+      </div>
+
+      <div class="card" style="background: #F5EFE6; border-color: #D6CEBE;">
+        <span class="section-kicker">Informasi Rujukan Ilmiah</span>
+        <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          Pengembangan Model Pembelajaran Mitigasi Cagar Budaya (MICAYA) pada Pembelajaran Sejarah
+        </h3>
+        <p style="font-size: 0.8rem; color: #57534E; margin-bottom: 1rem; line-height: 1.6;">
+          Peneliti: <strong>Shela Dwi Utari</strong><br>
+          Fokus: Historiografi Kebencanaan, Eco-pedagogy, dan Pelestarian Cagar Budaya Nusantara dalam Kurikulum Merdeka Fase E & F.
+        </p>
+
+        <div style="border-top: 1px solid #D6CEBE; padding-top: 0.75rem; font-size: 0.75rem; color: #44403C;">
+          <strong>Kelengkapan Berkas HTML:</strong>
+          <ul style="margin-left: 1.2rem; margin-top: 0.4rem; line-height: 1.6;">
+            <li>Tabel 2 Sintaks Model Micaya Lengkap</li>
+            <li>Matriks 12 Situs Cagar Budaya & Protokol Mitigasi</li>
+            <li>Lembar Kerja Peserta Didik (LKPD) Siap Pakai</li>
+            <li>6 Ringkasan Esai Geohistori & Bencana</li>
+            <li>Evaluasi Kuis Diagnostik HOTS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: TABEL 2 SINTAKS MODEL PEMBELAJARAN MICAYA -->
+  <section id="sintaks">
+    <div class="container">
+      <span class="section-kicker">Transkrip Riset Asli · Tabel 2</span>
+      <h2 class="section-title">Sintak Model</h2>
+      <p class="section-desc">
+        Berikut adalah <strong>Tabel 2. Sintaks Model Pembelajaran Micaya</strong> yang memuat pembagian peran antara aktivitas guru dan aktivitas peserta didik dalam 5 tahap pembelajaran sejarah:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 20%;">Tahap Pembelajaran</th>
+              <th style="width: 40%; border-left: 1px solid var(--border);">Aktivitas Guru</th>
+              <th style="width: 40%; border-left: 1px solid var(--border);">Aktivitas Peserta Didik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 1. Orientasi -->
+            <tr>
+              <td>
+                <div class="step-title">1. Orientasi</div>
+                <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">15 Menit</div>
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Menjelaskan urgensi dan relevansi materi sejarah kebencanaan dengan kehidupan peserta didik.<br><br>
+                2. Mengajukan pertanyaan pemantik mengenai satu atau beberapa peristiwa sejarah yang terdapat dalam buku teks atau modul pembelajaran.<br><br>
+                3. Mengarahkan peserta didik untuk mengidentifikasi cara memperoleh informasi dan menjelaskan proses terjadinya peristiwa tersebut.
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Merespons dan mengembangkan pertanyaan berdasarkan permasalahan yang disampaikan guru.<br><br>
+                2. Mengidentifikasi peristiwa sejarah melalui penelusuran informasi dalam buku teks dan modul pembelajaran.
+              </td>
+            </tr>
+
+            <!-- 2. Membaca -->
+            <tr>
+              <td>
+                <div class="step-title">2. Membaca</div>
+                <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">25 Menit</div>
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Merumuskan pertanyaan analitis dan mengarahkan pembentukan kelompok kecil.<br><br>
+                2. Menyediakan bahan ajar sebagai sumber utama kegiatan membaca dan diskusi kelompok.<br><br>
+                3. Memfasilitasi penggunaan sumber tambahan untuk memperluas pemahaman terhadap peristiwa yang dikaji.
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Membentuk kelompok kecil sesuai arahan guru.<br><br>
+                2. Menentukan peristiwa sejarah yang akan dianalisis.<br><br>
+                3. Membaca, menelaah, dan mendiskusikan sumber pembelajaran untuk menjawab pertanyaan yang telah dirumuskan.
+              </td>
+            </tr>
+
+            <!-- 3. Mengontekstualisasi -->
+            <tr>
+              <td>
+                <div class="step-title">3. Mengontekstualisasi</div>
+                <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">25 Menit</div>
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Mengarahkan peserta didik untuk menghubungkan peristiwa sejarah dengan kondisi kontemporer, terutama yang berkaitan dengan cagar budaya, lingkungan alam, dan dinamika sosial budaya.<br><br>
+                2. Memfasilitasi analisis hubungan antara pengalaman masyarakat pada masa lalu dan persoalan kebencanaan pada masa kini.
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Menghubungkan peristiwa sejarah dengan fenomena kontemporer berdasarkan sumber sejarah yang relevan.<br><br>
+                2. Menganalisis keterkaitan antara perubahan lingkungan, risiko bencana, dan pelestarian cagar budaya.
+              </td>
+            </tr>
+
+            <!-- 4. Membuat -->
+            <tr>
+              <td>
+                <div class="step-title">4. Membuat</div>
+                <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">30 Menit</div>
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Mengarahkan peserta didik untuk mengembangkan produk pembelajaran berdasarkan hasil analisis dan diskusi kelompok.<br><br>
+                2. Memberikan panduan penyusunan karya dalam bentuk esai, artikel sederhana, infografis, presentasi, atau media lainnya.
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Menyusun karya secara kolaboratif berdasarkan hasil analisis sumber sejarah.<br><br>
+                2. Mengembangkan historiografi sederhana yang memuat interpretasi historis dan alternatif solusi terhadap persoalan kebencanaan.
+              </td>
+            </tr>
+
+            <!-- 5. Mengomunikasikan -->
+            <tr>
+              <td>
+                <div class="step-title">5. Mengomunikasikan</div>
+                <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">25 Menit</div>
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Memfasilitasi presentasi, diskusi, dan pertukaran gagasan antarkelompok.<br><br>
+                2. Memberikan umpan balik terhadap hasil karya dan argumentasi peserta didik.<br><br>
+                3. Mengarahkan kegiatan refleksi bersama untuk mengevaluasi proses dan hasil pembelajaran.
+              </td>
+              <td style="border-left: 1px solid var(--border);">
+                1. Mempresentasikan hasil historiografi sederhana di hadapan kelompok lain.<br><br>
+                2. Membandingkan hasil interpretasi kelompok dengan narasi sejarah yang telah dipelajari dan hasil kelompok lainnya.<br><br>
+                3. Menyusun simpulan dan melakukan refleksi bersama guru.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: 12 CAGAR BUDAYA & MITIGASI BENCANA -->
+  <section id="cagar-budaya">
+    <div class="container">
+      <span class="section-kicker">Geospasial & Konservasi</span>
+      <h2 class="section-title">Matriks Cagar Budaya Terdampak Bencana di Indonesia</h2>
+      <p class="section-desc">
+        Ringkasan data 12 situs bersejarah yang diidentifikasi dalam kerangka kerja MICAYA, mencakup jenis ancaman alam dan langkah mitigasi preventif serta kuratif:
+      </p>
+
+      <div class="table-container" style="margin-top: 1.5rem;">
+        <table>
+          <thead>
+            <tr>
+              <th>Nama Situs & Wilayah</th>
+              <th>Material Konstruksi</th>
+              <th>Ancaman Utama</th>
+              <th>Riwayat Bencana Historis</th>
+              <th>Tindakan Mitigasi Utama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Candi Borobudur</strong><br><span style="font-size: 0.75rem; color: #666;">Magelang, Jawa Tengah</span></td>
+              <td>Batu Andesit berpori</td>
+              <td><span style="color: #B91C1C; font-weight: 600;">Erupsi Merapi (Abu Asam pH 3,5)</span></td>
+              <td>Letusan purba 1006 M & Erupsi eksplosif Merapi 2010</td>
+              <td>Pemasangan tarpaulin cover pelindung stupa, dry cleaning sikat halus, pembersihan saluran jaladwara.</td>
+            </tr>
+            <tr>
+              <td><strong>Candi Prambanan</strong><br><span style="font-size: 0.75rem; color: #666;">Sleman & Klaten, DIY-Jateng</span></td>
+              <td>Batu Andesit bertakik</td>
+              <td><span style="color: #D97706; font-weight: 600;">Gempa Dangkal Sesar Opak</span></td>
+              <td>Gempa Yogyakarta 27 Mei 2006 (Mw 6.3) meruntuhkan ratna puncak</td>
+              <td>Rekonstruksi anastilosis 3D TLS, jangkar perkuatan serat aramid tersembunyi, sensor akselerograf.</td>
+            </tr>
+            <tr>
+              <td><strong>Candi Sambisari</strong><br><span style="font-size: 0.75rem; color: #666;">Kalasan, Sleman, DIY</span></td>
+              <td>Batu Andesit</td>
+              <td><span style="color: #B91C1C; font-weight: 600;">Lahar Dingin Merapi Purba</span></td>
+              <td>Terkubur sedalam 6,5 meter tanah laharik selama 1000 tahun</td>
+              <td>Pompa drainase otomatis di dasar cekungan galian, perkuatan lereng tebing, piezometer air tanah.</td>
+            </tr>
+            <tr>
+              <td><strong>Masjid Raya Baiturrahman</strong><br><span style="font-size: 0.75rem; color: #666;">Banda Aceh, Aceh</span></td>
+              <td>Kapur, Karang & Beton Bertulang</td>
+              <td><span style="color: #0284C7; font-weight: 600;">Tsunami Samudra Hindia</span></td>
+              <td>Gempa Megathrust Sumatra-Andaman Mw 9.1 & Tsunami 26 Des 2004</td>
+              <td>Desain pilar terbuka peredam hidrodinamis, fungsi TES (Tempat Evakuasi Sementara), kearifan Smong.</td>
+            </tr>
+            <tr>
+              <td><strong>Kompleks Muaro Jambi</strong><br><span style="font-size: 0.75rem; color: #666;">Muaro Jambi, Jambi</span></td>
+              <td>Bata Merah Purba</td>
+              <td><span style="color: #0D9488; font-weight: 600;">Banjir Luapan Batanghari</span></td>
+              <td>Banjir periodik tahunan menggenangi candi hingga kedalaman 1,5 meter</td>
+              <td>Revitalisasi tanggul alam dan kanal purba, aplikasi biocide organik cegah pelapukan lumut.</td>
+            </tr>
+            <tr>
+              <td><strong>Kawasan Trowulan (Majapahit)</strong><br><span style="font-size: 0.75rem; color: #666;">Mojokerto, Jawa Timur</span></td>
+              <td>Bata Merah & Terakota</td>
+              <td><span style="color: #0D9488; font-weight: 600;">Sedimentasi Aluvial Brantas</span></td>
+              <td>Banjir bandang purba dan lahar Kali Brantas menimbun fondasi kota</td>
+              <td>Pelestarian Kolam Segaran sebagai waduk retensi limpasan air, perlindungan cagar budaya dari galian pabrik bata.</td>
+            </tr>
+            <tr>
+              <td><strong>Situs Manusia Purba Sangiran</strong><br><span style="font-size: 0.75rem; color: #666;">Sragen, Jawa Tengah</span></td>
+              <td>Sedimen Aluvial & Lapisan Fosil</td>
+              <td><span style="color: #78350F; font-weight: 600;">Erosi Tebing & Longsor</span></td>
+              <td>Tergerusnya lapisan pembawa fosil Homo erectus oleh Sungai Cemoro</td>
+              <td>Penanaman rumput vetiver penahan lereng, terasering bronjong kawat, tim relawan penyelamat fosil.</td>
+            </tr>
+            <tr>
+              <td><strong>Kota Tua Jakarta & Sunda Kelapa</strong><br><span style="font-size: 0.75rem; color: #666;">Jakarta Barat & Utara</span></td>
+              <td>Kayu Jati/Ulin, Bata Kolonial</td>
+              <td><span style="color: #0284C7; font-weight: 600;">Land Subsidence & Rob Laut</span></td>
+              <td>Banjir kanal era VOC sejak 1699, subsidensi tanah 5-10 cm/tahun</td>
+              <td>Tanggul pengaman pantai, penghentian sedotan air tanah mandiri, dehumidifier cegah jamur pembusuk kayu.</td>
+            </tr>
+            <tr>
+              <td><strong>Benteng Marlborough</strong><br><span style="font-size: 0.75rem; color: #666;">Kota Bengkulu, Bengkulu</span></td>
+              <td>Batu Karang & Bata Kapur</td>
+              <td><span style="color: #D97706; font-weight: 600;">Megathrust Mentawai-Bengkulu</span></td>
+              <td>Gempa Bengkulu Mw 8.4 (2007) meretakkan dinding bastion</td>
+              <td>Pemecah ombak pantai Tapak Paderi, injeksi nat kapur elastis pengikat dinding tanpa semen Portland.</td>
+            </tr>
+            <tr>
+              <td><strong>Benteng Belgica & Neira</strong><br><span style="font-size: 0.75rem; color: #666;">Kepulauan Banda, Maluku</span></td>
+              <td>Batu Karang & Batu Pasir</td>
+              <td><span style="color: #B91C1C; font-weight: 600;">Erupsi Gunung Api Banda</span></td>
+              <td>Letusan eksplosif 1988 menghujani benteng dengan batu pijar & abu</td>
+              <td>SOP evakuasi lintang pulau ke Banda Besar, penutup darurat meriam perunggu VOC, pembersihan asam belerang.</td>
+            </tr>
+            <tr>
+              <td><strong>Desa Adat Bawömataluo (Nias)</strong><br><span style="font-size: 0.75rem; color: #666;">Nias Selatan, Sumatera Utara</span></td>
+              <td>Kayu Manawadano & Batu Megalit</td>
+              <td><span style="color: #D97706; font-weight: 600;">Gempa Megathrust Nias</span></td>
+              <td>Gempa Nias Mw 8.6 (2005) - Omo Sebua tetap kokoh berdiri</td>
+              <td>Pemeliharaan pasak kayu diagonal bracing, sendi batu bundar peredam getaran seismik alami, instalasi penangkal petir.</td>
+            </tr>
+            <tr>
+              <td><strong>Candi Muara Takus</strong><br><span style="font-size: 0.75rem; color: #666;">Kampar, Riau</span></td>
+              <td>Bata Cetak & Sandstone</td>
+              <td><span style="color: #0D9488; font-weight: 600;">Kelembapan Tropis DAS Kampar</span></td>
+              <td>Banjir sungai dan rembesan air gambut memicu kerak hitam</td>
+              <td>Parit pengering keliling, pelapisan etil silikat untuk mengikat kembali butiran batu pasir stupa Mahligai.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FORMULIR LKPD INTERAKTIF SIAP CETAK -->
+  <section id="lkpd">
+    <div class="container">
+      <span class="section-kicker">Instrumen Siswa · Berbasis Sintaks MICAYA</span>
+      <h2 class="section-title">Lembar Kerja Peserta Didik (LKPD) Interaktif</h2>
+      <p class="section-desc">
+        Formulir digital ini dapat diisi langsung oleh kelompok siswa di kelas, disimpan di peramban, dan dicetak sebagai laporan portofolio pembelajaran sejarah:
+      </p>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Nama Kelompok / Tim:</label>
+            <input type="text" id="lkpd-group" placeholder="Contoh: Kelompok 1 - Prambanan">
+          </div>
+          <div class="form-group">
+            <label>Kelas / Jenjang:</label>
+            <input type="text" id="lkpd-class" value="X - Sejarah Indonesia">
+          </div>
+          <div class="form-group">
+            <label>Pilihan Cagar Budaya:</label>
+            <select id="lkpd-site">
+              <option value="Candi Prambanan (Gempa Sesar Opak)">Candi Prambanan (Gempa Sesar Opak)</option>
+              <option value="Candi Borobudur (Abu Erupsi Merapi)">Candi Borobudur (Abu Erupsi Merapi)</option>
+              <option value="Candi Sambisari (Lahar Vulkanik Purba)">Candi Sambisari (Lahar Vulkanik Purba)</option>
+              <option value="Masjid Baiturrahman (Tsunami Aceh)">Masjid Baiturrahman (Tsunami Aceh)</option>
+              <option value="Muaro Jambi (Banjir DAS Batanghari)">Muaro Jambi (Banjir DAS Batanghari)</option>
+              <option value="Kota Tua Jakarta (Rob & Subsidence)">Kota Tua Jakarta (Rob & Subsidence)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Nama Anggota Kelompok:</label>
+          <input type="text" id="lkpd-members" placeholder="Nama lengkap siswa 1, 2, 3, 4, 5...">
+        </div>
+
+        <!-- 5 Tahapan LKPD -->
+        <div class="form-group">
+          <label>1. Tahap Orientasi (Pertanyaan Pemantik Kelompok):</label>
+          <textarea id="lkpd-t1" rows="2" placeholder="Tuliskan pertanyaan pemantik mengenai hubungan antara peristiwa bencana dengan cagar budaya yang dikaji..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>2. Tahap Membaca (Ringkasan Fakta & Sumber Sejarah):</label>
+          <textarea id="lkpd-t2" rows="3" placeholder="Tuliskan temuan kronologi bencana masa lalu, tahun peristiwa, dan kerusakan material yang ditemukan dari sumber bacaan..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>3. Tahap Mengontekstualisasi (Hubungan Sejarah vs Masa Kini):</label>
+          <textarea id="lkpd-t3" rows="3" placeholder="Bagaimana kondisi lingkungan saat ini mempengaruhi kerentanan cagar budaya tersebut? Bandingkan dengan masa lampau..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>4. Tahap Membuat (Alternatif Solusi Mitigasi Pra, Saat, Pasca):</label>
+          <textarea id="lkpd-t4" rows="3" placeholder="Rumuskan rekomendasi nyata: Tindakan Pra-Bencana, Saat Bencana Terjadi, dan Pasca-Bencana untuk melindungi situs..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>5. Tahap Mengomunikasikan (Simpulan & Refleksi Bersama):</label>
+          <textarea id="lkpd-t5" rows="2" placeholder="Tuliskan simpulan kelompok dan komitmen generasi muda dalam menjaga warisan pusaka bangsa..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem;" class="no-print">
+          <button type="button" onclick="saveLkpd()" class="btn btn-secondary">Simpan Draf</button>
+          <button type="button" onclick="window.print()" class="btn btn-primary">Cetak LKPD Ini</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ESAI SEJARAH BENCANA RINGKAS -->
+  <section id="esai">
+    <div class="container">
+      <span class="section-kicker">Historiografi Kritis & Arsip</span>
+      <h2 class="section-title">Enam Esai Kajian Sejarah Bencana</h2>
+      <p class="section-desc">
+        Materi telaah untuk Sintaks Membaca dan Mengontekstualisasi:
+      </p>
+
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">01 · Abad ke-8 s.d. 11 M</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Amuk Merapi dan Penguburan Peradaban Mataram Kuno</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Mengungkap bukti stratigrafi Candi Sambisari yang terpendam 6,5 meter tanah lahar hujan, serta hipotesis Van Bemmelen mengenai perpindahan kekuasaan Mpu Sindok ke Jawa Timur akibat erupsi katastropik dan krisis pangan.
+          </p>
+        </div>
+
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">02 · Mei 2006 s.d. Kini</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Goncangan Sesar Opak: Tragedi & Anastilosis Prambanan</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Menganalisis gempa dangkal Mw 6.3 pada 27 Mei 2006, terlemparnya batu ratna akibat momen inersia menara tinggi 47 meter, dan metode rekonstruksi anastilosis presisi berbasis Terrestrial Laser Scanner 3D.
+          </p>
+        </div>
+
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">03 · 26 Desember 2004</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Gelombang Samudra Hindia: Baiturrahman & Kearifan Smong</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Membongkar rahasia teknik sipil pilar lengkung terbuka Masjid Baiturrahman yang menahan tsunami 2004, serta efektivitas tradisi tutur lisan Smong di Pulau Simeulue yang menyelamatkan ribuan nyawa.
+          </p>
+        </div>
+
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">04 · 1815 & 1883 M</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Tahun Tanpa Musim Panas: Tambora 1815 & Krakatau 1883</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Mempelajari dampak global aerosol sulfat erupsi Tambora yang memusnahkan tiga kerajaan di Sumbawa dan mengubah iklim dunia 1816, serta tsunami Krakatau 1883 yang menghancurkan artefak pesisir Selat Sunda.
+          </p>
+        </div>
+
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">05 · Abad ke-17 s.d. Abad ke-21</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Kutukan Kanal Batavia: Deforestasi & Pelapukan Kota Tua</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Kesalahan duplikasi kanal Amsterdam di muara tropis Ciliwung, erosi perkebunan tebu hulu Bogor, wabah malaria VOC, hingga tantangan land subsidence kontemporer dan banjir rob yang merusak kayu kolonial.
+          </p>
+        </div>
+
+        <div class="card">
+          <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);">06 · Abad ke-14 M</span>
+          <h3 style="font-size: 1.15rem; font-weight: bold; margin: 0.4rem 0;">Kearifan Air Majapahit: Kolam Segaran & Candi Tikus</h3>
+          <p style="font-size: 0.8rem; color: #57534E; line-height: 1.6;">
+            Bagaimana perencana kota Majapahit mendesain waduk retensi Kolam Segaran seluas 6,5 hektar dan Candi Tikus sebagai instrumen pemantau muka air tanah purba untuk memitigasi banjir luapan Kali Brantas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: KUIS HOTS INTERAKTIF OFFLINE -->
+  <section id="kuis">
+    <div class="container">
+      <span class="section-kicker">Evaluasi Kognitif Mandiri</span>
+      <h2 class="section-title">Kuis HOTS Mitigasi Cagar Budaya</h2>
+      <p class="section-desc">
+        Uji pemahaman komparatif geohistori dan konservasi. Jawab soal di bawah ini dan klik tombol evaluasi:
+      </p>
+
+      <div style="margin-top: 1.5rem;">
+        
+        <!-- Soal 1 -->
+        <div class="quiz-card">
+          <p style="font-size: 0.75rem; color: #78350F; font-family: 'JetBrains Mono', monospace;">Soal 01 · Tahap 2: Membaca & Analisis Fakta</p>
+          <h4 style="font-size: 0.95rem; font-weight: 600; margin: 0.4rem 0;">
+            Mengapa abu vulkanik Gunung Merapi tahun 2010 sangat membahayakan batu andesit Candi Borobudur jika tidak segera dimitigasi?
+          </h4>
+          <div class="quiz-options">
+            <label class="quiz-opt">
+              <input type="radio" name="q1" value="A"> A. Abu vulkanik bersuhu lebih dari 600°C yang melelehkan batuan seketika.
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q1" value="B"> B. Abu vulkanik bersifat asam (pH 3,5–4) yang melarutkan mineral batuan andesit berpori jika terkena air hujan.
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q1" value="C"> C. Abu vulkanik menarik rayap pemakan batu andesit purba.
+            </label>
+          </div>
+          <div id="fb-q1" class="quiz-feedback"></div>
+        </div>
+
+        <!-- Soal 2 -->
+        <div class="quiz-card">
+          <p style="font-size: 0.75rem; color: #78350F; font-family: 'JetBrains Mono', monospace;">Soal 02 · Tahap 3: Mengontekstualisasi</p>
+          <h4 style="font-size: 0.95rem; font-weight: 600; margin: 0.4rem 0;">
+            Pada gempa Yogyakarta 2006, faktor struktural apa yang menyebabkan ratna puncak Candi Prambanan terlempar jatuh?
+          </h4>
+          <div class="quiz-options">
+            <label class="quiz-opt">
+              <input type="radio" name="q2" value="A"> A. Bentuk menara yang ramping dan tinggi memperbesar momen inersia ayunan di puncak melebihi batas elastisitas gesek kuncian batu tanpa semen.
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q2" value="B"> B. Fondasi candi tidak bertanah melainkan diletakkan di atas kayu apung.
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q2" value="C"> C. Candi sengaja dihancurkan oleh masyarakat setempat.
+            </label>
+          </div>
+          <div id="fb-q2" class="quiz-feedback"></div>
+        </div>
+
+        <!-- Soal 3 -->
+        <div class="quiz-card">
+          <p style="font-size: 0.75rem; color: #78350F; font-family: 'JetBrains Mono', monospace;">Soal 03 · Tahap 4: Solusi Mitigasi</p>
+          <h4 style="font-size: 0.95rem; font-weight: 600; margin: 0.4rem 0;">
+            Manakah tindakan mitigasi PREVENTIF (Pra-Bencana) yang dilakukan pengelola Borobudur saat Merapi berstatus Siaga?
+          </h4>
+          <div class="quiz-options">
+            <label class="quiz-opt">
+              <input type="radio" name="q3" value="A"> A. Menyemprotkan air berklorin pekat ke seluruh relief.
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q3" value="B"> B. Memasang penutup terpal anti-asam pada stupa dan menutup saluran drainase kuno (jaladwara).
+            </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q3" value="C"> C. Mengganti batu andesit dengan marmer modern.
+            </label>
+          </div>
+          <div id="fb-q3" class="quiz-feedback"></div>
+        </div>
+
+        <div style="margin-top: 1rem;" class="no-print">
+          <button type="button" onclick="evaluateQuiz()" class="btn btn-primary">
+            Periksa Jawaban Kuis
+          </button>
+          <span id="quiz-score" style="margin-left: 1rem; font-weight: bold; font-size: 0.9rem;"></span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display: flex; flex-direction: column; gap: 1rem;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center;">
+        <div>
+          <strong style="color: var(--text);">MICAYA</strong> — Model Pembelajaran Mitigasi Cagar Budaya Indonesia.
+          <p style="margin-top: 0.2rem;">Berdasarkan publikasi riset Shela Dwi Utari.</p>
+        </div>
+        <div>
+          <a href="index.html" style="color: var(--text); text-decoration: underline; margin-right: 1rem;">Buka Web Aplikasi Interaktif</a>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-secondary" style="font-size: 0.7rem;">Kembali ke Atas</button>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border); padding-top: 0.75rem;">
+        Hak Cipta Terbuka untuk Tujuan Pembelajaran & Pendidikan Sejarah Indonesia. Dapat dibuka tanpa koneksi internet setelah diunduh.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Save LKPD to localStorage
+    function saveLkpd() {
+      const data = {
+        group: document.getElementById('lkpd-group').value,
+        classGrade: document.getElementById('lkpd-class').value,
+        site: document.getElementById('lkpd-site').value,
+        members: document.getElementById('lkpd-members').value,
+        t1: document.getElementById('lkpd-t1').value,
+        t2: document.getElementById('lkpd-t2').value,
+        t3: document.getElementById('lkpd-t3').value,
+        t4: document.getElementById('lkpd-t4').value,
+        t5: document.getElementById('lkpd-t5').value,
+      };
+      localStorage.setItem('micaya_lkpd_data', JSON.stringify(data));
+      alert('Draf LKPD berhasil disimpan di peramban ini!');
+    }
+
+    // Load LKPD on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('micaya_lkpd_data');
+      if (saved) {
+        try {
+          const d = JSON.parse(saved);
+          if (d.group) document.getElementById('lkpd-group').value = d.group;
+          if (d.classGrade) document.getElementById('lkpd-class').value = d.classGrade;
+          if (d.site) document.getElementById('lkpd-site').value = d.site;
+          if (d.members) document.getElementById('lkpd-members').value = d.members;
+          if (d.t1) document.getElementById('lkpd-t1').value = d.t1;
+          if (d.t2) document.getElementById('lkpd-t2').value = d.t2;
+          if (d.t3) document.getElementById('lkpd-t3').value = d.t3;
+          if (d.t4) document.getElementById('lkpd-t4').value = d.t4;
+          if (d.t5) document.getElementById('lkpd-t5').value = d.t5;
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    });
+
+    // Evaluate Quiz
+    function evaluateQuiz() {
+      let score = 0;
+      
+      // Q1: B
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const fb1 = document.getElementById('fb-q1');
+      fb1.style.display = 'block';
+      if (q1 && q1.value === 'B') {
+        score += 33.3;
+        fb1.style.background = '#D1FAE5';
+        fb1.style.color = '#065F46';
+        fb1.innerHTML = '<strong>Benar!</strong> Abu tefra Merapi memiliki sifat asam tajam (pH 3,5–4) yang merusak batuan andesit jika bereaksi dengan air hujan.';
+      } else {
+        fb1.style.background = '#FEE2E2';
+        fb1.style.color = '#991B1B';
+        fb1.innerHTML = '<strong>Kurang Tepat.</strong> Jawaban yang benar adalah B (Abu bersifat asam pH 3,5–4 yang memicu pelapukan kimiawi batuan).';
+      }
+
+      // Q2: A
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const fb2 = document.getElementById('fb-q2');
+      fb2.style.display = 'block';
+      if (q2 && q2.value === 'A') {
+        score += 33.3;
+        fb2.style.background = '#D1FAE5';
+        fb2.style.color = '#065F46';
+        fb2.innerHTML = '<strong>Benar!</strong> Bentuk menara yang ramping dan tinggi memicu momen inersia ayunan gempa terbesar di puncak bangunan candi.';
+      } else {
+        fb2.style.background = '#FEE2E2';
+        fb2.style.color = '#991B1B';
+        fb2.innerHTML = '<strong>Kurang Tepat.</strong> Jawaban yang benar adalah A (Momen inersia ayunan menara tinggi melampaui batas elastisitas kuncian batu).';
+      }
+
+      // Q3: B
+      const q3 = document.querySelector('input[name="q3"]:checked');
+      const fb3 = document.getElementById('fb-q3');
+      fb3.style.display = 'block';
+      if (q3 && q3.value === 'B') {
+        score += 33.4;
+        fb3.style.background = '#D1FAE5';
+        fb3.style.color = '#065F46';
+        fb3.innerHTML = '<strong>Benar!</strong> Penutupan terpal (tarpaulin covers) adalah mitigasi preventif standar untuk melindungi relief dari tefra vulkanik.';
+      } else {
+        fb3.style.background = '#FEE2E2';
+        fb3.style.color = '#991B1B';
+        fb3.innerHTML = '<strong>Kurang Tepat.</strong> Jawaban yang benar adalah B (Pemasangan terpal pelindung stupa dan penutupan saluran air).';
+      }
+
+      document.getElementById('quiz-score').innerText = 'Skor Anda: ' + Math.round(score) + ' / 100';
+    }
+
+    // Download standalone HTML file feature
+    function downloadSelf() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MICAYA-Modul-Pembelajaran-Mitigasi-Cagar-Budaya.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

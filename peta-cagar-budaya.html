@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peta Cagar Budaya & Risiko Bencana - MICAYA</title>
+  <meta name="description" content="Peta interaktif persebaran 12 situs cagar budaya di Indonesia, jalur bahaya sesar gempa, busur vulkanik, dan protokol mitigasi bencana." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --surface-subtle: #F4EFE6;
+      --text: #1C1917;
+      --text-muted: #57534E;
+      --border: #E7E5E4;
+      --border-strong: #D6D3D1;
+      --primary: #1C1917;
+      --accent: #9A3412;
+      --accent-light: #FFEDD5;
+      --emerald: #065F46;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    header { background: rgba(250, 247, 242, 0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0.85rem 0; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); }
+    .brand-badge { width: 2.25rem; height: 2.25rem; background: var(--primary); color: #FEF3C7; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.15rem; }
+    .brand-title { font-size: 1.15rem; font-weight: bold; letter-spacing: -0.02em; }
+    .brand-sub { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; display: block; }
+    
+    .nav-links { display: flex; gap: 1.25rem; font-size: 0.825rem; font-weight: 500; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a.active, .nav-links a:hover { color: var(--text); font-weight: 600; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+    .btn-primary { background: var(--primary); color: #FFFFFF; }
+    .btn-secondary { background: var(--surface-subtle); color: var(--text); border-color: var(--border-strong); }
+
+    .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.5rem; display: block; font-weight: 600; }
+    .section-title { font-size: 2rem; font-weight: bold; color: var(--text); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .section-desc { font-size: 0.925rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; }
+
+    /* Layout Map Grid */
+    .map-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 1.5rem; margin-top: 1.5rem; align-items: start; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+
+    .map-canvas-wrapper {
+      position: relative; width: 100%; aspect-ratio: 16/10; background: radial-gradient(ellipse at center, #E8E2D7 0%, #DFD7CA 100%);
+      border-radius: 0.75rem; overflow: hidden; border: 1px solid #D6CEBE;
+    }
+
+    /* Map Marker styling */
+    .map-marker {
+      position: absolute; transform: translate(-50%, -50%); cursor: pointer; z-index: 10;
+      width: 1.6rem; height: 1.6rem; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: bold; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+      transition: transform 0.15s;
+    }
+    .map-marker:hover, .map-marker.active { transform: translate(-50%, -50%) scale(1.3); z-index: 20; ring: 3px solid #1C1917; }
+    .marker-vulkanik { background: #B91C1C; }
+    .marker-gempa { background: #D97706; }
+    .marker-tsunami { background: #0284C7; }
+    .marker-banjir { background: #0D9488; }
+    .marker-longsor { background: #78350F; }
+
+    /* Filter Toolbar */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; padding: 0.75rem 1rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; margin-top: 1rem;
+    }
+    .filter-btn {
+      padding: 0.35rem 0.75rem; font-size: 0.75rem; border-radius: 0.4rem; border: 1px solid var(--border);
+      background: var(--surface-subtle); color: var(--text); cursor: pointer; font-family: inherit;
+    }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); font-weight: 600; }
+
+    /* Dossier Info styling */
+    .dossier-box {
+      padding: 0.75rem; border-radius: 0.5rem; font-size: 0.8rem; margin-top: 0.5rem; line-height: 1.5;
+    }
+
+    footer { background: var(--surface-subtle); border-top: 1px solid var(--border); padding: 3rem 0 2rem; font-size: 0.75rem; color: var(--text-muted); margin-top: 3rem; }
+
+    @media (max-width: 900px) {
+      .map-grid { grid-template-columns: 1fr; }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 0.75rem; width: 100%; padding-top: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">M</div>
+        <div>
+          <span class="brand-title">MICAYA</span>
+          <span class="brand-sub">Model Mitigasi Cagar Budaya</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="peta-cagar-budaya.html" class="active">Peta Cagar Budaya</a>
+        <a href="esai-sejarah-bencana.html">Esai Sejarah Bencana</a>
+        <a href="model-micaya.html">Sintak Model</a>
+        <a href="sumber-belajar.html">Sumber Belajar & LKPD</a>
+      </nav>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="model-micaya.html" class="btn btn-secondary">Sintaks MICAYA</a>
+        <a href="index.html" class="btn btn-primary" title="Buka Aplikasi Web Terintegrasi">Web App Utama</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+    <div>
+      <span class="section-kicker">Geospasial Risiko Bencana · Peta Interaktif</span>
+      <h1 class="section-title">Peta Cagar Budaya & Protokol Mitigasi Kebencanaan</h1>
+      <p class="section-desc">
+        Klik pin cagar budaya pada peta kepulauan Indonesia di bawah untuk melihat rincian bahaya geologis, sejarah bencana masa lampau, dan protokol mitigasi 3 fase (Pra, Saat, Pasca-Bencana).
+      </p>
+    </div>
+
+    <!-- Filter Buttons & Layer Toggles -->
+    <div class="filter-bar">
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-right: 0.5rem;">Filter Wilayah:</span>
+      <button class="filter-btn active" onclick="filterByIsland('Semua', this)">Semua Pulau</button>
+      <button class="filter-btn" onclick="filterByIsland('Sumatera', this)">Sumatera</button>
+      <button class="filter-btn" onclick="filterByIsland('Jawa', this)">Jawa</button>
+      <button class="filter-btn" onclick="filterByIsland('Maluku-Papua', this)">Maluku & Papua</button>
+
+      <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-left: 1rem; margin-right: 0.5rem;">Layer:</span>
+      <label style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.25rem; cursor: pointer;">
+        <input type="checkbox" id="chk-faults" checked onchange="toggleLayer('fault-lines', this.checked)"> Sesar & Megathrust
+      </label>
+      <label style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.25rem; cursor: pointer;">
+        <input type="checkbox" id="chk-volcanoes" checked onchange="toggleLayer('volcano-arc', this.checked)"> Cincin Api
+      </label>
+    </div>
+
+    <!-- Main Map Grid -->
+    <div class="map-grid">
+      
+      <!-- Left: Interactive Vector Map Canvas -->
+      <div class="card" style="padding: 1rem;">
+        <div class="map-canvas-wrapper" id="map-container">
+          
+          <svg viewBox="0 0 1000 600" style="width: 100%; height: 100%;">
+            <!-- Grid Lines -->
+            <line x1="0" y1="260" x2="1000" y2="260" stroke="#C5BBAA" stroke-width="1" stroke-dasharray="4 4" />
+            <text x="15" y="252" fill="#8C7E6C" font-size="9" font-family="monospace">Khatulistiwa 0°</text>
+
+            <!-- FAULT LINES & MEGATHRUST -->
+            <g id="fault-lines">
+              <path d="M 60 120 Q 90 260, 180 340 T 360 410 T 520 425 T 660 435 T 820 420" fill="none" stroke="#B45309" stroke-width="3" stroke-dasharray="6 3" opacity="0.8"/>
+              <path d="M 90 140 Q 150 250, 220 330" fill="none" stroke="#D97706" stroke-width="2" stroke-dasharray="3 2" opacity="0.8"/>
+              <path d="M 435 410 L 450 430" fill="none" stroke="#DC2626" stroke-width="3.5"/> <!-- Sesar Opak -->
+              <text x="410" y="445" fill="#DC2626" font-size="8" font-family="monospace" font-weight="bold">Sesar Opak</text>
+            </g>
+
+            <!-- VOLCANO ARC -->
+            <g id="volcano-arc">
+              <path d="M 85 150 Q 160 260, 240 330 Q 340 380, 440 405 Q 520 415, 600 420 Q 720 425, 840 375" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+              <circle cx="270" cy="350" r="3.5" fill="#EF4444" /> <!-- Krakatau -->
+              <circle cx="430" cy="405" r="4" fill="#DC2626" /> <!-- Merapi -->
+              <circle cx="650" cy="425" r="3.5" fill="#DC2626" /> <!-- Tambora -->
+              <circle cx="840" cy="375" r="3.5" fill="#DC2626" /> <!-- Banda -->
+            </g>
+
+            <!-- ISLAND MASSES -->
+            <g fill="#D3C7B5" stroke="#BAAE9B" stroke-width="1.5">
+              <path d="M 70 110 C 100 130, 130 170, 160 210 C 190 250, 220 290, 250 330 C 270 350, 275 365, 260 370 C 240 375, 215 350, 185 300 C 155 250, 115 190, 75 140 Z"/> <!-- Sumatera -->
+              <path d="M 125 240 Q 135 255, 130 265 Q 120 255, 125 240 Z"/> <!-- Nias -->
+              <path d="M 340 380 C 380 375, 430 380, 480 390 C 520 395, 545 405, 540 425 C 520 435, 480 435, 430 430 C 380 425, 345 410, 335 395 Z"/> <!-- Jawa -->
+              <path d="M 505 385 Q 540 385, 535 398 Q 505 400, 505 385 Z"/> <!-- Madura -->
+              <path d="M 555 422 Q 570 422, 568 433 Q 553 433, 555 422 Z"/> <!-- Bali -->
+              <path d="M 580 423 Q 598 423, 595 434 Q 578 434, 580 423 Z"/> <!-- Lombok -->
+              <path d="M 610 420 Q 645 418, 640 435 Q 608 435, 610 420 Z"/> <!-- Sumbawa -->
+              <path d="M 660 420 Q 720 422, 715 435 Q 655 435, 660 420 Z"/> <!-- Flores -->
+              <path d="M 370 200 C 430 180, 490 200, 520 230 C 540 270, 530 310, 510 330 C 480 350, 440 360, 400 350 C 370 335, 350 280, 370 200 Z"/> <!-- Kalimantan -->
+              <path d="M 620 230 Q 650 210, 680 235 Q 660 260, 645 280 Q 675 300, 690 325 Q 670 345, 650 330 Q 635 310, 630 270 Z"/> <!-- Sulawesi -->
+              <path d="M 760 280 Q 780 275, 775 305 Q 755 305, 760 280 Z"/> <!-- Halmahera -->
+              <path d="M 770 335 Q 795 330, 790 350 Q 765 350, 770 335 Z"/> <!-- Seram -->
+              <circle cx="840" cy="375" r="4" fill="#A89B85"/> <!-- Banda Neira -->
+              <path d="M 830 310 C 860 290, 920 300, 970 320 C 990 360, 980 420, 950 440 C 910 450, 870 430, 850 390 C 835 360, 810 330, 830 310 Z"/> <!-- Papua -->
+            </g>
+          </svg>
+
+          <!-- 12 Markers overlay -->
+          <div id="markers-container"></div>
+        </div>
+
+        <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+          <span>Keterangan Warna:</span>
+          <span><span style="color: #B91C1C;">●</span> Vulkanik · <span style="color: #D97706;">●</span> Gempa Sesar · <span style="color: #0284C7;">●</span> Tsunami · <span style="color: #0D9488;">●</span> Banjir</span>
+        </div>
+      </div>
+
+      <!-- Right: Detailed Site Mitigation Dossier -->
+      <div class="card" id="site-dossier">
+        <!-- Will be populated by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div><strong>MICAYA</strong> — Peta Cagar Budaya & Mitigasi Kebencanaan.</div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="index.html" style="color: var(--text); text-decoration: none;">Beranda</a>
+        <a href="model-micaya.html" style="color: var(--text); text-decoration: none;">Model MICAYA</a>
+        <a href="sumber-belajar.html" style="color: var(--text); text-decoration: none;">LKPD</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SITES_DATA = [
+      {
+        id: 'borobudur', name: 'Candi Borobudur', island: 'Jawa', x: 43.5, y: 69.2,
+        hazard: 'Vulkanik', hazardClass: 'marker-vulkanik', material: 'Batu Andesit berpori',
+        period: 'Abad ke-8 s.d. 9 M (Dinasti Syailendra)', location: 'Magelang, Jawa Tengah',
+        history: 'Terkubur letusan Merapi purba 1006 M. Pada erupsi Merapi 2010, tertutup abu asam setebal 2,5 cm (pH 3,5–4) yang menyumbat drainase jaladwara.',
+        vulnerability: 'Porositas alami andesit mudah menyerap asam; sistem jaladwara kuno mudah tersumbat pasir vulkanik.',
+        pre: 'Pemasangan penutup terpal anti-asam pada stupa teras saat status Merapi Siaga; pemantauan tiltmeter.',
+        during: 'Evakuasi tim dan penutupan seluruh akses pengunjung ke struktur atas.',
+        post: 'Pembersihan kering (dry cleaning) dengan sapu ijuk halus tanpa air sebelum dibilas larutan netralisasi.'
+      },
+      {
+        id: 'prambanan', name: 'Candi Prambanan', island: 'Jawa', x: 44.5, y: 70.0,
+        hazard: 'Gempa Tektonik', hazardClass: 'marker-gempa', material: 'Batu Andesit bertakik',
+        period: 'Abad ke-9 M (Rakai Pikatan)', location: 'Sleman & Klaten (DIY-Jateng)',
+        history: 'Gempa Yogyakarta 27 Mei 2006 (Mw 6.3) meruntuhkan ratna kemuncak Candi Siwa setinggi 47 meter dan memicu keretakan vertikal.',
+        vulnerability: 'Bentuk menara ramping dan tinggi memperbesar momen inersia ayunan; sistem batu tumpuk tanpa semen modern.',
+        pre: 'Pemasangan akselerograf gempa real-time di bilik candi; pemodelan 3D Terrestrial Laser Scanner (TLS).',
+        during: 'Evakuasi cepat ke tanah lapang pelataran kedua; zonasi pengaman 50 meter dari kaki candi.',
+        post: 'Rekonstruksi anastilosis presisi tinggi; perkuatan struktural tersembunyi dengan serat aramid elastis.'
+      },
+      {
+        id: 'sambisari', name: 'Candi Sambisari', island: 'Jawa', x: 44.0, y: 70.3,
+        hazard: 'Vulkanik', hazardClass: 'marker-vulkanik', material: 'Batu Andesit',
+        period: 'Abad ke-9 M (Mataram Kuno)', location: 'Kalasan, Sleman, DIY',
+        history: 'Ditemukan petani pada 1966 terkubur 6,5 meter di bawah sawah akibat banjir lahar dingin Merapi purba abad ke-11.',
+        vulnerability: 'Berada di dalam cekungan galian (pit) di bawah permukaan tanah; rawan genangan air tanah dan banjir.',
+        pre: 'Pembangunan pompa drainase otomatis berdaya tinggi dan tanggul bibir cekungan.',
+        during: 'Pengaktifan genset pompa darurat untuk membuang air hujan ekstrem.',
+        post: 'Pengerukan lumpur tanpa alat berat langsung menyentuh batu andesit.'
+      },
+      {
+        id: 'baiturrahman', name: 'Masjid Raya Baiturrahman', island: 'Sumatera', x: 9.8, y: 26.5,
+        hazard: 'Tsunami', hazardClass: 'marker-tsunami', material: 'Kapur, Karang & Beton Bertulang',
+        period: '1881 M / Abad ke-17', location: 'Banda Aceh, Aceh',
+        history: 'Gempa Megathrust Mw 9.1 & Tsunami 26 Desember 2004 setinggi 15 meter menyapu kota; bangunan utama masjid bertahan dan menyelamatkan ribuan jiwa.',
+        vulnerability: 'Jarak dekat dari pesisir Teluk Banda Aceh (~3 km); korosi garam laut pada besi tulangan kubah.',
+        pre: 'Integrasi halaman masjid sebagai Tempat Evakuasi Sementara (TES); sirine TEWS BMKG.',
+        during: 'Pemanfaatan lantai atas dan pilar terbuka peredam gaya hidrodinamis tsunami.',
+        post: 'Pencucian residu garam laut (haloklasti) agar tidak merapuhkan plesteran kapur.'
+      },
+      {
+        id: 'muaro-jambi', name: 'Kompleks Percandian Muaro Jambi', island: 'Sumatera', x: 25.5, y: 52.0,
+        hazard: 'Banjir & Pelapukan', hazardClass: 'marker-banjir', material: 'Bata Merah Purba',
+        period: 'Abad ke-7 s.d. 14 M (Melayu Kuno)', location: 'Muaro Jambi, Jambi',
+        history: 'Banjir luapan musiman Sungai Batanghari secara berkala merendam pelataran candi hingga kedalaman 1,5 meter.',
+        vulnerability: 'Bata merah kuno sangat rapuh terhadap rendaman air; kelembapan tropis memicu lumut pemakan mineral.',
+        pre: 'Pemeliharaan tanggul alam dan kanalisasi purba di sekeliling kawasan; biocide ramah lingkungan.',
+        during: 'Pemasangan geobag penahan limpasan air sungai.',
+        post: 'Pengeringan perlahan struktur bata agar tidak retak termal mendadak.'
+      },
+      {
+        id: 'trowulan', name: 'Kawasan Kota Majapahit Trowulan', island: 'Jawa', x: 50.0, y: 71.0,
+        hazard: 'Banjir & Pelapukan', hazardClass: 'marker-banjir', material: 'Bata Merah Purba',
+        period: 'Abad ke-13 s.d. 15 M', location: 'Mojokerto, Jawa Timur',
+        history: 'Banjir laharik dan sedimentasi aluvial Kali Brantas abad ke-15 menimbun permukiman ibu kota Majapahit.',
+        vulnerability: 'Struktur bata merah tanpa perekat semen sensitif terhadap genangan air tanah.',
+        pre: 'Revitalisasi waduk retensi Kolam Segaran seluas 6,5 hektar dan kanal pengendali air Majapahit.',
+        during: 'Pengoperasian pintu air gravitasi dan pompa mobile di cekungan Candi Tikus.',
+        post: 'Pembersihan endapan aluvial dengan sikat halus secara bertahap.'
+      },
+      {
+        id: 'sangiran', name: 'Situs Manusia Purba Sangiran', island: 'Jawa', x: 45.2, y: 68.2,
+        hazard: 'Erosi & Longsor', hazardClass: 'marker-longsor', material: 'Sedimen Aluvial & Lapisan Fosil',
+        period: 'Pleistosen (1,8 juta tahun lalu)', location: 'Sragen, Jawa Tengah',
+        history: 'Erosi tebing stratigrafi Sungai Cemoro menghanyutkan singkapan fosil Homo erectus berharga.',
+        vulnerability: 'Struktur tanah lempung hitam (black clay) mengembang saat basah dan retak dalam saat kemarau.',
+        pre: 'Penanaman rumput vetiver penahan lereng dan pemasangan bronjong kawat sungai.',
+        during: 'Pemasangan garis pengaman bahaya longsor tebing.',
+        post: 'Ekskavasi penyelamatan kilat (salvage archaeology) terhadap fosil yang tersingkap.'
+      },
+      {
+        id: 'kota-tua-jakarta', name: 'Kota Tua Jakarta & Sunda Kelapa', island: 'Jawa', x: 37.0, y: 65.0,
+        hazard: 'Banjir & Pelapukan', hazardClass: 'marker-banjir', material: 'Kayu Ulin/Jati & Bata Kolonial',
+        period: 'Abad ke-17 s.d. 20 M', location: 'DKI Jakarta',
+        history: 'Banjir kanal era VOC sejak 1699; kini mengalami subsidensi tanah 5–10 cm/tahun dan banjir rob pasang laut.',
+        vulnerability: 'Ketinggian tanah berada di bawah pasang laut; kelembapan membusukkan struktur kayu pintu jati kuno.',
+        pre: 'Pembangunan tanggul laut pesisir Sunda Kelapa; penghentian pemompaan air tanah mandiri.',
+        during: 'Aktivasi polder pengendali air dan evakuasi arsip museum ke lantai dua.',
+        post: 'Pengeringan ruangan dengan dehumidifier industri untuk mencegah tumbuhnya jamur kayu.'
+      },
+      {
+        id: 'marlborough', name: 'Benteng Marlborough', island: 'Sumatera', x: 21.0, y: 57.0,
+        hazard: 'Gempa Tektonik', hazardClass: 'marker-gempa', material: 'Batu Karang & Bata Kapur',
+        period: '1714 M (EIC Inggris)', location: 'Kota Bengkulu, Bengkulu',
+        history: 'Gempa Megathrust Mentawai-Bengkulu Mw 8.4 (2007) meretakkan dinding benteng bastion barat.',
+        vulnerability: 'Dinding bata tebal terikat adukan kapur tradisional yang rentan terhadap pergeseran geser seismik.',
+        pre: 'Penyuntikan adukan nat kapur elastis; pembuatan pemecah gelombang pantai Tapak Paderi.',
+        during: 'Evakuasi ke lapangan terbuka Bastion menjauhi dinding tinggi.',
+        post: 'Penyangga balok kayu darurat (shoring) pada dinding yang mengalami lendutan.'
+      },
+      {
+        id: 'belgica', name: 'Benteng Belgica & Neira', island: 'Maluku-Papua', x: 84.0, y: 62.5,
+        hazard: 'Vulkanik', hazardClass: 'marker-vulkanik', material: 'Kapur & Batu Karang',
+        period: '1611 M (VOC Belanda)', location: 'Banda Neira, Maluku',
+        history: 'Erupsi Gunung Api Banda 1988 menghujani benteng dengan batu pijar dan abu vulkanik pekat.',
+        vulnerability: 'Jarak sangat dekat (< 1 km) dari lubang kawah aktif Gunung Api Banda di seberang selat.',
+        pre: 'Penutup darurat meriam perunggu VOC; koordinat jalur evakuasi lintang pulau ke Banda Besar.',
+        during: 'Evakuasi personel melalui pelabuhan darurat ke pulau seberang.',
+        post: 'Penyiraman air tawar untuk membilas partikel sulfur asam vulkanik dari meriam dan dinding karang.'
+      },
+      {
+        id: 'bawomataluo', name: 'Desa Adat Bawömataluo (Nias)', island: 'Sumatera', x: 13.5, y: 42.0,
+        hazard: 'Gempa Tektonik', hazardClass: 'marker-gempa', material: 'Kayu Tradisional Manawadano',
+        period: 'Abad ke-18 M (Megalitik)', location: 'Nias Selatan, Sumatera Utara',
+        history: 'Gempa dahsyat Nias Mw 8.6 pada 28 Maret 2005; rumah tradisional Omo Sebua tetap berdiri tanpa kerusakan fatal.',
+        vulnerability: 'Bahaya kebakaran akibat perkampungan serba kayu kering; kelangkaan kayu ulin pengganti.',
+        pre: 'Pemeliharaan pasak kayu diagonal bracing dan sendi batu bundar peredam getaran alami.',
+        during: 'Struktur elastis bergoyang meredam gaya seismik secara harmonis.',
+        post: 'Gotong royong adat (falöwa) untuk mengecek kemiringan sendi batu tumpuan.'
+      },
+      {
+        id: 'muara-takus', name: 'Candi Muara Takus', island: 'Sumatera', x: 19.5, y: 44.5,
+        hazard: 'Banjir & Pelapukan', hazardClass: 'marker-banjir', material: 'Bata Purba & Sandstone',
+        period: 'Abad ke-11 M (Sriwijaya)', location: 'Kampar, Riau',
+        history: 'Banjir musiman Sungai Kampar Kanan dan rembesan air gambut memicu kerak hitam pada stupa Mahligai.',
+        vulnerability: 'Batu pasir (sandstone) lunak mudah terkelupas oleh fluktuasi kelembapan udara tropis.',
+        pre: 'Pemasangan parit pengering keliling dan pelapisan konsolidan etil silikat.',
+        during: 'Pengoperasian pintu pengatur limpasan menuju kanal luar situs.',
+        post: 'Pemeriksaan kelurusan poros menara stupa silindris Mahligai.'
+      }
+    ];
+
+    let currentSelectedId = 'borobudur';
+
+    function renderMarkers(filterIsland = 'Semua') {
+      const container = document.getElementById('markers-container');
+      container.innerHTML = '';
+
+      SITES_DATA.forEach(site => {
+        if (filterIsland !== 'Semua' && site.island !== filterIsland) return;
+
+        const el = document.createElement('div');
+        el.className = `map-marker ${site.hazardClass} ${site.id === currentSelectedId ? 'active' : ''}`;
+        el.style.left = `${site.x}%`;
+        el.style.top = `${site.y}%`;
+        el.title = `${site.name} (${site.hazard})`;
+        el.innerText = site.name.charAt(0);
+        el.onclick = () => selectSite(site.id);
+        container.appendChild(el);
+      });
+    }
+
+    function selectSite(id) {
+      currentSelectedId = id;
+      const site = SITES_DATA.find(s => s.id === id) || SITES_DATA[0];
+
+      // Update active pin
+      document.querySelectorAll('.map-marker').forEach(m => m.classList.remove('active'));
+      const activeEl = document.querySelector(`.map-marker[title*="${site.name}"]`);
+      if (activeEl) activeEl.classList.add('active');
+
+      // Update Dossier
+      const dossier = document.getElementById('site-dossier');
+      dossier.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+          <div>
+            <span style="font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; color: var(--accent); text-transform: uppercase;">${site.location} · ${site.island}</span>
+            <h2 style="font-size: 1.4rem; font-weight: bold; margin-top: 0.2rem;">${site.name}</h2>
+            <div style="font-size: 0.75rem; color: #57534E; font-style: italic;">${site.period}</div>
+          </div>
+          <span style="font-size: 0.7rem; font-weight: bold; padding: 0.25rem 0.6rem; border-radius: 0.35rem; background: var(--surface-subtle); border: 1px solid var(--border-strong);">
+            ${site.hazard}
+          </span>
+        </div>
+
+        <div style="font-size: 0.8rem; margin-top: 0.75rem;">
+          <strong>Bahan Bangunan:</strong> ${site.material}<br>
+          <strong>Kerentanan Fisik:</strong> ${site.vulnerability}
+        </div>
+
+        <div class="dossier-box" style="background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B;">
+          <strong>Riwayat Bencana:</strong><br>${site.history}
+        </div>
+
+        <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+          <h4 style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem;">Protokol Mitigasi 3 Fase:</h4>
+          
+          <div class="dossier-box" style="background: #FFFBEB; border: 1px solid #FDE68A;">
+            <strong>1. Pra-Bencana (Preventif):</strong><br>${site.pre}
+          </div>
+
+          <div class="dossier-box" style="background: #FEF2F2; border: 1px solid #FECACA;">
+            <strong>2. Saat Bencana (Tanggap Darurat):</strong><br>${site.during}
+          </div>
+
+          <div class="dossier-box" style="background: #ECFDF5; border: 1px solid #A7F3D0;">
+            <strong>3. Pasca-Bencana (Restorasi):</strong><br>${site.post}
+          </div>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <a href="sumber-belajar.html" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Kaji ${site.name} di Formulir LKPD →
+          </a>
+        </div>
+      `;
+    }
+
+    function filterByIsland(island, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderMarkers(island);
+    }
+
+    function toggleLayer(layerId, isVisible) {
+      const g = document.getElementById(layerId);
+      if (g) g.style.display = isVisible ? 'inline' : 'none';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMarkers();
+      selectSite('borobudur');
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

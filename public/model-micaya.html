@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sintak Model - MICAYA (Model Pembelajaran Mitigasi Cagar Budaya)</title>
+  <meta name="description" content="Tabel 2 Sintaks Model Pembelajaran Mitigasi Cagar Budaya (MICAYA) pada Pembelajaran Sejarah oleh Shela Dwi Utari." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F2;
+      --surface: #FFFFFF;
+      --surface-subtle: #F4EFE6;
+      --text: #1C1917;
+      --text-muted: #57534E;
+      --border: #E7E5E4;
+      --border-strong: #D6D3D1;
+      --primary: #1C1917;
+      --accent: #9A3412;
+      --accent-light: #FFEDD5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    header { background: rgba(250, 247, 242, 0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0.85rem 0; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text); }
+    .brand-badge { width: 2.25rem; height: 2.25rem; background: var(--primary); color: #FEF3C7; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1.15rem; }
+    .brand-title { font-size: 1.15rem; font-weight: bold; letter-spacing: -0.02em; }
+    .brand-sub { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; display: block; }
+    
+    .nav-links { display: flex; gap: 1.25rem; font-size: 0.825rem; font-weight: 500; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a.active, .nav-links a:hover { color: var(--text); font-weight: 600; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+    .btn-primary { background: var(--primary); color: #FFFFFF; }
+    .btn-secondary { background: var(--surface-subtle); color: var(--text); border-color: var(--border-strong); }
+
+    .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.5rem; display: block; font-weight: 600; }
+    .section-title { font-size: 2rem; font-weight: bold; color: var(--text); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .section-desc { font-size: 0.925rem; color: var(--text-muted); max-width: 750px; line-height: 1.7; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+
+    /* Table styling for Table 2 */
+    .table-container { overflow-x: auto; margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.825rem; }
+    th { background: #F5EFE6; padding: 1rem; font-family: 'Playfair Display', serif; font-weight: bold; color: var(--text); border-bottom: 2px solid var(--primary); }
+    td { padding: 1.25rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.65; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: #FAF7F2; }
+
+    .step-title { font-family: 'Playfair Display', serif; font-weight: bold; font-size: 1rem; color: var(--text); }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+    footer { background: var(--surface-subtle); border-top: 1px solid var(--border); padding: 3rem 0 2rem; font-size: 0.75rem; color: var(--text-muted); margin-top: 3rem; }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav-links { display: flex; flex-wrap: wrap; gap: 0.75rem; width: 100%; padding-top: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar Navigation -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">M</div>
+        <div>
+          <span class="brand-title">MICAYA</span>
+          <span class="brand-sub">Model Mitigasi Cagar Budaya</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="peta-cagar-budaya.html">Peta Cagar Budaya</a>
+        <a href="esai-sejarah-bencana.html">Esai Sejarah Bencana</a>
+        <a href="model-micaya.html" class="active">Sintak Model</a>
+        <a href="sumber-belajar.html">Sumber Belajar & LKPD</a>
+      </nav>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <button onclick="window.print()" class="btn btn-secondary">Cetak Tabel 2</button>
+        <a href="index.html" class="btn btn-primary" title="Buka Aplikasi Web Terintegrasi">Web App Utama</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 2.5rem; padding-bottom: 3rem;">
+    <div>
+      <span class="section-kicker">Rujukan Riset Ilmiah · Shela Dwi Utari</span>
+      <h1 class="section-title">Sintak Model</h1>
+      <p class="section-desc">
+        Halaman ini memuat transkrip resmi <strong>Tabel 2. Sintaks Model Pembelajaran Micaya</strong> dari publikasi riset pengembangan pembelajaran sejarah, membagi peran aktivitas guru dan peserta didik secara sistematis dalam 5 tahapan.
+      </p>
+    </div>
+
+    <!-- Kotak Sumber & Screenshot Asli -->
+    <div class="card" style="margin-top: 1.5rem; background: #F5EFE6; border-color: #D6CEBE; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; color: var(--accent); font-weight: bold;">
+          Publikasi ResearchGate
+        </span>
+        <h3 style="font-size: 1.05rem; font-weight: bold; margin-top: 0.2rem;">
+          Pengembangan Model Pembelajaran Mitigasi Cagar Budaya (MICAYA) pada Pembelajaran Sejarah
+        </h3>
+        <p style="font-size: 0.8rem; color: #57534E;">Peneliti: <strong>Shela Dwi Utari</strong></p>
+      </div>
+
+      <button onclick="toggleOriginalImage()" class="btn btn-secondary" style="background: white;">
+        Lihat Gambar Screenshot Asli
+      </button>
+    </div>
+
+    <!-- Hidden image preview modal -->
+    <div id="image-modal" style="display: none; margin-top: 1rem; text-align: center; background: white; padding: 1rem; border-radius: 1rem; border: 1px solid var(--border);">
+      <img src="./assets/aistudio/image_f3ec30a9.png" onerror="this.src='./public/assets/aistudio/image_f3ec30a9.png'" alt="Tabel 2 Sintaks Model Pembelajaran Micaya oleh Shela Dwi Utari" style="max-width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid #CCC;">
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Tangkapan layar asli dari naskah publikasi ResearchGate.</p>
+    </div>
+
+    <!-- TABEL 2 SINTAKS LENGKAP -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 22%;">Tahap Pembelajaran</th>
+            <th style="width: 39%; border-left: 1px solid var(--border);">Aktivitas Guru</th>
+            <th style="width: 39%; border-left: 1px solid var(--border);">Aktivitas Peserta Didik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1. Orientasi -->
+          <tr>
+            <td>
+              <div class="step-title">1. Orientasi</div>
+              <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">Tahap 01 · 15 Menit</div>
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Menjelaskan urgensi dan relevansi materi sejarah kebencanaan dengan kehidupan peserta didik.<br><br>
+              2. Mengajukan pertanyaan pemantik mengenai satu atau beberapa peristiwa sejarah yang terdapat dalam buku teks atau modul pembelajaran.<br><br>
+              3. Mengarahkan peserta didik untuk mengidentifikasi cara memperoleh informasi dan menjelaskan proses terjadinya peristiwa tersebut.
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Merespons dan mengembangkan pertanyaan berdasarkan permasalahan yang disampaikan guru.<br><br>
+              2. Mengidentifikasi peristiwa sejarah melalui penelusuran informasi dalam buku teks dan modul pembelajaran.
+            </td>
+          </tr>
+
+          <!-- 2. Membaca -->
+          <tr>
+            <td>
+              <div class="step-title">2. Membaca</div>
+              <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">Tahap 02 · 25 Menit</div>
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Merumuskan pertanyaan analitis dan mengarahkan pembentukan kelompok kecil.<br><br>
+              2. Menyediakan bahan ajar sebagai sumber utama kegiatan membaca dan diskusi kelompok.<br><br>
+              3. Memfasilitasi penggunaan sumber tambahan untuk memperluas pemahaman terhadap peristiwa yang dikaji.
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Membentuk kelompok kecil sesuai arahan guru.<br><br>
+              2. Menentukan peristiwa sejarah yang akan dianalisis.<br><br>
+              3. Membaca, menelaah, dan mendiskusikan sumber pembelajaran untuk menjawab pertanyaan yang telah dirumuskan.
+            </td>
+          </tr>
+
+          <!-- 3. Mengontekstualisasi -->
+          <tr>
+            <td>
+              <div class="step-title">3. Mengontekstualisasi</div>
+              <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">Tahap 03 · 25 Menit</div>
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Mengarahkan peserta didik untuk menghubungkan peristiwa sejarah dengan kondisi kontemporer, terutama yang berkaitan dengan cagar budaya, lingkungan alam, dan dinamika sosial budaya.<br><br>
+              2. Memfasilitasi analisis hubungan antara pengalaman masyarakat pada masa lalu dan persoalan kebencanaan pada masa kini.
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Menghubungkan peristiwa sejarah dengan fenomena kontemporer berdasarkan sumber sejarah yang relevan.<br><br>
+              2. Menganalisis keterkaitan antara perubahan lingkungan, risiko bencana, dan pelestarian cagar budaya.
+            </td>
+          </tr>
+
+          <!-- 4. Membuat -->
+          <tr>
+            <td>
+              <div class="step-title">4. Membuat</div>
+              <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">Tahap 04 · 30 Menit</div>
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Mengarahkan peserta didik untuk mengembangkan produk pembelajaran berdasarkan hasil analisis dan diskusi kelompok.<br><br>
+              2. Memberikan panduan penyusunan karya dalam bentuk esai, artikel sederhana, infografis, presentasi, atau media lainnya.
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Menyusun karya secara kolaboratif berdasarkan hasil analisis sumber sejarah.<br><br>
+              2. Mengembangkan historiografi sederhana yang memuat interpretasi historis dan alternatif solusi terhadap persoalan kebencanaan.
+            </td>
+          </tr>
+
+          <!-- 5. Mengomunikasikan -->
+          <tr>
+            <td>
+              <div class="step-title">5. Mengomunikasikan</div>
+              <div style="font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.25rem;">Tahap 05 · 25 Menit</div>
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Memfasilitasi presentasi, diskusi, dan pertukaran gagasan antarkelompok.<br><br>
+              2. Memberikan umpan balik terhadap hasil karya dan argumentasi peserta didik.<br><br>
+              3. Mengarahkan kegiatan refleksi bersama untuk mengevaluasi proses dan hasil pembelajaran.
+            </td>
+            <td style="border-left: 1px solid var(--border);">
+              1. Mempresentasikan hasil historiografi sederhana di hadapan kelompok lain.<br><br>
+              2. Membandingkan hasil interpretasi kelompok dengan narasi sejarah yang telah dipelajari dan hasil kelompok lainnya.<br><br>
+              3. Menyusun simpulan dan melakukan refleksi bersama guru.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Simulator Skenario RPP Sederhana -->
+    <div class="card" style="margin-top: 2rem;">
+      <span class="section-kicker">Alat Bantu Guru · Skenario Cepat</span>
+      <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">Contoh Penerapan Sintaks MICAYA pada Kasus Candi Prambanan</h3>
+      <div style="font-size: 0.85rem; color: #44403C; line-height: 1.7;">
+        <p><strong>1. Orientasi:</strong> Guru menampilkan foto ratna Candi Prambanan yang terlempar pasca gempa 27 Mei 2006. Siswa merespons pertanyaan mengapa batu puncak jatuh sementara lantainya tetap utuh.</p>
+        <p style="margin-top: 0.4rem;"><strong>2. Membaca:</strong> Siswa dalam kelompok membaca esai geohistori Sesar Opak dan sistem kuncian batu takik tanpa semen (*dry stone*).</p>
+        <p style="margin-top: 0.4rem;"><strong>3. Mengontekstualisasi:</strong> Siswa membandingkan daya lenting bangunan kuno vs gedung beton modern di daerah rawan sesar tektonik Yogyakarta saat ini.</p>
+        <p style="margin-top: 0.4rem;"><strong>4. Membuat:</strong> Siswa membuat infografis/esai mini berisi rekomendasi anastilosis dan keselamatan evakuasi wisatawan candi.</p>
+        <p style="margin-top: 0.4rem;"><strong>5. Mengomunikasikan:</strong> Presentasi simulasi pos mitigasi di depan kelas dan refleksi komitmen menjaga warisan pusaka bangsa.</p>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <a href="sumber-belajar.html" class="btn btn-primary">Gunakan di Lembar Kerja Siswa (LKPD) →</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div><strong>MICAYA</strong> — Sintaks Model Pembelajaran Mitigasi Cagar Budaya.</div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="index.html" style="color: var(--text); text-decoration: none;">Beranda</a>
+        <a href="peta-cagar-budaya.html" style="color: var(--text); text-decoration: none;">Peta</a>
+        <a href="esai-sejarah-bencana.html" style="color: var(--text); text-decoration: none;">Esai</a>
+        <a href="sumber-belajar.html" style="color: var(--text); text-decoration: none;">LKPD</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleOriginalImage() {
+      const modal = document.getElementById('image-modal');
+      modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
